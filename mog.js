@@ -1,5 +1,8 @@
 //Cargamos la librería de Discord.js
 const Discord = require("discord.js");
+const ytdl = require('ytdl-core');
+const fs = require('fs');
+const request = require('request');
 
 //Este será el bot en sí.
 const client = new Discord.Client();
