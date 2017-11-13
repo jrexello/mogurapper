@@ -21,7 +21,7 @@ client.on("ready", () => {
   client.user.setPresence({
 		status: "online",
 		game: {
-			name: "Carreras de Chocobos",
+			name: "las apuestas ¡NO ESTOY ENFERMO, KUPÓ!",
 			streaming: false,
 			type: 1,
 		}
@@ -93,7 +93,7 @@ client.on("message", message => {
       }
       
       message.channel.send(number.toString + "/100");
-      message.channel.send(mensaje);
+      message.channel.send(respuesta);
 
     }
 }
