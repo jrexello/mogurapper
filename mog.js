@@ -22,14 +22,8 @@ client.on("ready", () => {
 client.on("message", message => {
   //Solo hacemos caso a los que empiecen con !
   if (message.content.startsWith("!")) {
-    mensaje = message.content.substring(1);
-
-    if(mensaje === "culo"){
-
-      message.channel.send("Me gustan grandes!");
-    }
-
-    else if(mensaje === "play"){
+    
+    if(mensaje === "!play"){
       console.log("Recibido " + message.content)
       let videoUrl = message.content.split(" ");
 			const voiceChannel = message.author.voiceChannel;
@@ -53,7 +47,7 @@ client.on("message", message => {
 
     }
 
-    else if(mensaje === "stop"){
+    else if(mensaje === "!stop"){
       const voiceChannel = message.author.voiceChannel;
 			if (!voiceChannel) {
 				message.reply("ni siquiera estoy y ya me quieres echar, kupopo... :(");
