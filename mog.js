@@ -7,7 +7,14 @@ const request = require('request');
 //Este será el bot en sí.
 const client = new Discord.Client();
 
-var mensaje = "";
+var dice = {
+  sides: 100,
+  roll: function () {
+    var randomNumber = Math.floor(Math.random() * this.sides) + 1;
+    return randomNumber;
+  }
+}
+
 
 client.on("ready", () => {
   console.log("I am ready!");
@@ -58,6 +65,36 @@ client.on("message", message => {
 				message.reply("adiós..., kupopo...");
 				voiceChannel.leave();
 			}
+    }
+
+    else if(message.content === "!dice"){
+      var number = dice.roll();
+      var respuesta = "";
+      if(number === 0) {
+        respuesta = "¡Fallo crítico! ¡No quisiera estar bajo tu pompón, kupó";
+      }
+      else if((number > 0 )&& (number <= 10)){
+        respuesta = "¡Qué mala suerte, Kupó!";
+      }
+      else if((number > 10) && (number <= 50)){
+        respuesta = "¡No ha sido tu mejor tirada, kupó!";
+      }
+
+      else if((number > 50) && (number <= 90)){
+        respuesta = "¡Buena tirada, kupó!";
+      }
+
+      else if((number > 90) && (number < 100)){
+        respuesta = "¡Genial! ¡Mis guiles estabán por tí, <@" + message.author.id + ">";
+      }
+
+      else if (number === 100){
+        respuesta = "¡Crítico, kupó! ¡Ani te debe unas galletas!"
+      }
+      
+      message.channel.send(number.toString + "/100");
+      message.channel.send(mensaje);
+
     }
 }
 });
