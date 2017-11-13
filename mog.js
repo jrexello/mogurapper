@@ -4,27 +4,6 @@ const Discord = require("discord.js");
 //Este será el bot en sí.
 const client = new Discord.Client();
 
-//El array donde se guardarán las planificaciones
-
-var arrPlanes = [];
-
-//El objeto raid
-function Plan(id, maxMembers, message){
-  this.id = id;
-  this.maxMembers = maxMembers;
-  this.message = message;
-  this.autor = message.author;
-  this.lista = [message.author];
-}
-
-//Métodos
-
-Plan.prototype.dameLista = function(canal){
-  for(var i = 0; i < this.lista.length; i++){
-    canal.send("<@" + this.lista[i].id + ">");
-  }
-}
-
 var mensaje = "";
 
 client.on("ready", () => {
@@ -73,7 +52,7 @@ client.on("message", message => {
 
     }
 
-    else if(mesnaje === "stop"){
+    else if(mensaje === "stop"){
       const voiceChannel = message.member.voiceChannel;
 			if (!voiceChannel) {
 				message.reply("ni siquiera estoy y ya me quieres echar, kupopo... :(");
