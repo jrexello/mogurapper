@@ -23,7 +23,7 @@ client.on("message", message => {
   //Solo hacemos caso a los que empiecen con !
   if (message.content.startsWith("!")) {
     
-    if(mensaje === "!play"){
+    if(mensaje.startsWith("!play")){
       console.log("Recibido " + message.content);
       let videoUrl = message.content.split(" ");
 			const voiceChannel = message.author.voiceChannel;
