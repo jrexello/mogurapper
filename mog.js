@@ -24,7 +24,7 @@ client.on("message", message => {
   if (message.content.startsWith("!")) {
     
     if(mensaje === "!play"){
-      console.log("Recibido " + message.content)
+      console.log("Recibido " + message.content);
       let videoUrl = message.content.split(" ");
 			const voiceChannel = message.author.voiceChannel;
 			if (videoUrl[1] == undefined) {
