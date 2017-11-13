@@ -7,6 +7,9 @@ const request = require('request');
 //Este será el bot en sí.
 const client = new Discord.Client();
 
+var arrVid = []
+var reproduciendo = false
+
 var dice = {
   sides: 100,
   roll: function () {
@@ -21,7 +24,7 @@ client.on("ready", () => {
   client.user.setPresence({
 		status: "online",
 		game: {
-			name: "las apuestas ¡NO ESTOY ENFERMO, KUPÓ!",
+			name: "Ser una chica, según Ani",
 			streaming: false,
 			type: 1,
 		}
@@ -45,15 +48,21 @@ client.on("message", message => {
 			} else {
 				message.reply("Reproduciendo " + videoUrl[1] + " kupó!");
 				message.delete();
-			}
+      }
+      arrVid.push(videoUrl[1])
+      if (!reproduciendo){
+        reproduciendo = true
 			voiceChannel.join()
 				.then(connnection => {
-					const stream = ytdl(videoUrl[1], {
+					const stream = ytdl(arrVid.shift(), {
 						filter: 'audioonly'
-					});;
-					const dispatcher = connnection.playStream(stream);
-					dispatcher.on('end', () => voiceChannel.leave());
-				});
+          });;          
+          const dispatcher = connnection.playStream(stream)
+          dispatcher.on('end', () => finVideo(connection))
+        });
+      } else {
+        message.channel.send('Un video más añadido, kupó')
+      }
 
     }
 
@@ -98,6 +107,17 @@ client.on("message", message => {
     }
 }
 });
+
+function finVideo(conn){
+  if (typeof arrVid !== 'undefined' &&  arrVid.length> 0){
+    var streamNext  = ytdl(arrVid.shift())
+    const dispatcher = conn.playStream(streamNext)
+    dispatcher.on('end', () => finVideo(conn))
+  } else{
+  dispatcher.on('end', () => voiceChannel.leave());
+  reproduciendo = false
+  }
+}
 
 client.login(process.env.TOKEN_BOT);
 
