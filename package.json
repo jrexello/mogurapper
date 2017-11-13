@@ -1,5 +1,5 @@
 {
-  "name": "Test",
+  "name": "Mog",
   "description": "Testcription",
   "version": "0.0.0",
   "main": "mog.js",
@@ -7,9 +7,14 @@
     "start": "node mog.js"
   },
   "dependencies": {
+    "ajax-request": "^1.2.3",
     "discord.js": "11.1.0",
-    "eslint": "^4.11.0",
-    "request": "2.81.0"
+    "discord.js-arbitrary-ffmpeg": "^1.0.0",
+    "ffmpeg": "0.0.4",
+    "node-opus": "^0.2.7",
+    "request": "^2.81.0",
+    "sqlite": "^2.8.0",
+    "ytdl-core": "^0.18.1"
   },
   "devDependencies": {
     "eslint-config-google": "^0.9.1"
