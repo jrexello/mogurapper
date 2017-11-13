@@ -57,7 +57,7 @@ client.on("message", message => {
 						filter: 'audioonly'
           });;          
           const dispatcher = connnection.playStream(stream)
-          dispatcher.on('end', finVideo(connection))
+          dispatcher.on('end', finVideo(connnection))
         });
       } else {
         message.channel.send('Un video más añadido, kupó')
