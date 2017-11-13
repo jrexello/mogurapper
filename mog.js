@@ -45,13 +45,12 @@ client.on("message", message => {
 			}
 			if (!voiceChannel) {
 				return message.reply("debes estar en un canal de voz, kupó!");
-			} else {
-				message.reply("Reproduciendo " + videoUrl[1] + " kupó!");
-				message.delete();
-      }
+			}      
       arrVid.push(videoUrl[1])
       if (!reproduciendo){
         reproduciendo = true
+        message.reply("Reproduciendo " + videoUrl[1] + " kupó!");
+				message.delete();
 			voiceChannel.join()
 				.then(connnection => {
 					const stream = ytdl(arrVid.shift(), {
@@ -110,7 +109,7 @@ client.on("message", message => {
 
 function finVideo(conn){
   if (typeof arrVid !== 'undefined' &&  arrVid.length> 0){
-    var streamNext  = ytdl(arrVid.shift())
+    var streamNext  = ytdl(arrVid.shift(), {filter: 'audioonly'});;  
     const dispatcher = conn.playStream(streamNext)
     dispatcher.on('end', () => finVideo(conn))
   } else{
