@@ -49,7 +49,7 @@ client.on("message", message => {
       arrVid.push(videoUrl[1])
       if (!reproduciendo){
         reproduciendo = true
-        message.reply("Reproduciendo " + videoUrl[1] + " kupó!");
+        message.reply("Reproduciendo <" + videoUrl[1] + "> kupó!");
 				message.delete();
 			voiceChannel.join()
 				.then(connnection => {
@@ -57,7 +57,7 @@ client.on("message", message => {
 						filter: 'audioonly'
           });;          
           const dispatcher = connnection.playStream(stream)
-          dispatcher.on('end', () => finVideo(connection))
+          dispatcher.on('end', finVideo(connection))
         });
       } else {
         message.channel.send('Un video más añadido, kupó')
@@ -108,10 +108,11 @@ client.on("message", message => {
 });
 
 function finVideo(conn){
-  if (typeof arrVid !== 'undefined' &&  arrVid.length> 0){
+  console.log('Entrando en fin')
+  if (typeof arrVid !== 'undefined' &&  arrVid.length > 0){
     var streamNext  = ytdl(arrVid.shift(), {filter: 'audioonly'});;  
     const dispatcher = conn.playStream(streamNext)
-    dispatcher.on('end', () => finVideo(conn))
+    dispatcher.on('end', finVideo(conn))
   } else{
   dispatcher.on('end', () => voiceChannel.leave());
   reproduciendo = false
