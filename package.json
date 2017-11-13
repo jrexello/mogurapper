@@ -1,0 +1,17 @@
+{
+  "name": "Test",
+  "description": "Testcription",
+  "version": "0.0.0",
+  "main": "mog.js",
+  "scripts": {
+    "start": "node mog.js"
+  },
+  "dependencies": {
+    "discord.js": "11.1.0",
+    "eslint": "^4.11.0",
+    "request": "2.81.0"
+  },
+  "devDependencies": {
+    "eslint-config-google": "^0.9.1"
+  }
+}
