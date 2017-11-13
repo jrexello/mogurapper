@@ -31,7 +31,7 @@ client.on("message", message => {
 
     else if(mensaje === "play"){
       let videoUrl = message.content.split(" ");
-			const voiceChannel = message.member.voiceChannel;
+			const voiceChannel = message.author.voiceChannel;
 			if (videoUrl[1] == undefined) {
 				return message.reply("pon un enlace al menos, kupó!");
 			}
@@ -53,7 +53,7 @@ client.on("message", message => {
     }
 
     else if(mensaje === "stop"){
-      const voiceChannel = message.member.voiceChannel;
+      const voiceChannel = message.author.voiceChannel;
 			if (!voiceChannel) {
 				message.reply("ni siquiera estoy y ya me quieres echar, kupopo... :(");
 			} else {
