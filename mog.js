@@ -60,7 +60,8 @@ client.on("message", message => {
           dispatcher.on('end', finVideo(connnection))
         });
       } else {
-        message.channel.send('Un video más añadido, kupó')
+        message.channel.send('Un video más añadido, kupó <' +message.content.substring(1)+ '>')
+        message.delete()
       }
 
     }
@@ -109,9 +110,10 @@ client.on("message", message => {
 
 function finVideo(conn){
   console.log('Entrando en fin')
+  var dispatcher
   if (typeof arrVid !== 'undefined' &&  arrVid.length > 0){
     var streamNext  = ytdl(arrVid.shift(), {filter: 'audioonly'});;  
-    const dispatcher = conn.playStream(streamNext)
+    dispatcher = conn.playStream(streamNext)
     dispatcher.on('end', finVideo(conn))
   } else{
   dispatcher.on('end', () => voiceChannel.leave());
