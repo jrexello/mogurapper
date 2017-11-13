@@ -92,7 +92,7 @@ client.on("message", message => {
         respuesta = "¡Crítico, kupó! ¡Ani te debe unas galletas!"
       }
       
-      message.channel.send(number.toString() + "/100");
+      message.channel.send("**" + number.toString() + "/100**");
       message.channel.send(respuesta);
 
     }
