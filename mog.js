@@ -1,8 +1,6 @@
 //Cargamos la librería de Discord.js
 const Discord = require("discord.js");
 const ytdl = require('ytdl-core');
-const fs = require('fs');
-const request = require('request');
 
 //Este será el bot en sí.
 const client = new Discord.Client();
@@ -24,7 +22,7 @@ client.on("ready", () => {
   client.user.setPresence({
 		status: "online",
 		game: {
-			name: "Ser una chica, según Ani",
+			name: "Celebrar la Moguvidad!",
 			streaming: false,
 			type: 1,
 		}
@@ -60,7 +58,7 @@ client.on("message", message => {
           dispatcher.on('end', finVideo(connnection))
         });
       } else {
-        message.channel.send('Un video más añadido, kupó <' +message.content.substring(1)+ '>')
+        message.channel.send('Un video más añadido, kupó <' +message.content.substring(6) + '>')
         message.delete()
       }
 
