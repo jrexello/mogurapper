@@ -21,7 +21,7 @@ client.on("ready", () => {
   client.user.setPresence({
 		status: "online",
 		game: {
-			name: "las apuestas ¡NO ESTOY ENFERMO, KUPÓ!",
+			name: "Celebrar la moguvidad!",
 			streaming: false,
 			type: 1,
 		}
