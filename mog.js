@@ -21,7 +21,7 @@ client.on("ready", () => {
   client.user.setPresence({
 		status: "online",
 		game: {
-			name: "Celebrar la moguvidad!",
+			name: "Rolear!",
 			streaming: false,
 			type: 1,
 		}
